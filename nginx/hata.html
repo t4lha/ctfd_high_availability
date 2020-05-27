@@ -1,0 +1,82 @@
+<html>
+    <head>
+<meta charset="utf-8">
+<title>Hata!</title> 
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>  
+<style type="text/css">
+  span {
+  min-width: 5px;
+  display: inline-block;
+  letter-spacing: 1.5px;
+  font-family: "Calibri";
+  color: green;
+  font-size: xx-large;
+ 
+}
+
+body {
+  background: #111;
+  position: relative;
+}
+
+body, html {
+   height: 100%;
+}
+p{
+  margin-left: 10em;
+}
+.text {
+  overflow: hidden;
+  height: auto;
+}
+</style>
+</head>
+<body>
+  <br><br><br>
+<p class="text" data-text="Sayfa Yükleniyor Lütfen Bekleyiniz..
+
+
+
+Tekrar Bağlanıyorsunuz
+
+
+3
+
+
+2
+
+
+1"></p>
+
+<script>
+ 
+   var printText = $('.text').data('text');
+
+var contentArray = printText.split('\n');
+$.each(contentArray, function(index, newLine) {
+  $('.text').append('<span style="display:block;" id="'+index+'"></span>');
+
+  var lineID = index;
+  var self = $(this);
+    setTimeout(function () {
+      $.each(self, function(index, chunk){
+          setTimeout(function () {
+            $('#'+lineID).append("<span>"+chunk+"</span>");
+            $('body, html').scrollTop($(document).height());
+          }, index*50);
+      });
+ 
+    }, index*600);
+
+}); 
+setTimeout(function(){
+  location.reload();
+},9000);
+
+</script>
+ 
+
+</body>
+
+</html>
